@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="7" time="8.904" timestamp="2023-07-23T00:06:32.748720" hostname="duaas-MacBook-Pro.local"><testcase classname="JSONPlaceholder.tests.test_create_posts" name="test_create_a_new_posts_for_same_user" time="0.561" /><testcase classname="JSONPlaceholder.tests.test_delete_posts" name="test_delete_a_new_post" time="1.046"><failure message="assert 200 == 400&#10; +  where 200 = &lt;Response [200]&gt;.status_code">@pytest.mark.Delete
+    @pytest.mark.happyScenario
+    # post using same userID with a non-empty title and body,verify the correct response to be 201
+    def test_delete_a_new_post():
+        user_id, id = create_a_new_posts()
+        path = "/posts/" + str(user_id)
+        print(user_id, id)
+        header = {"Content-Type": "application/json", "charset": "UTF-8"}
+        response = requests.delete(url=url + path)
+        response_text = json.loads(response.text)
+        print("response==", response_text)
+        assert len(response_text) == 0, "the list is non empty"
+        print("the list is non empty")
+&gt;       assert response.status_code == 400
+E       assert 200 == 400
+E        +  where 200 = &lt;Response [200]&gt;.status_code
+
+tests/test_delete_posts.py:27: AssertionError</failure></testcase><testcase classname="JSONPlaceholder.tests.test_get_posts" name="test_get_first_post_id" time="0.351" /><testcase classname="JSONPlaceholder.tests.test_get_posts" name="test_post_id_randomly" time="3.538" /><testcase classname="JSONPlaceholder.tests.test_get_posts" name="test_any_user_id_and_verify_the_album_title_does_not_exceed_300_characters" time="0.390" /><testcase classname="JSONPlaceholder.tests.test_get_posts" name="test_for_specific_user_id_print_all_titles_where_completed_with_false" time="1.551" /><testcase classname="JSONPlaceholder.tests.test_update_posts" name="test_updated_for_a_new_post_was_added" time="1.258" /></testsuite></testsuites>
