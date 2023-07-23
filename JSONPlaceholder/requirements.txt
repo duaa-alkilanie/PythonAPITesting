@@ -3,4 +3,4 @@ pytest=7.3.0
 jsonpath=0.82
 requests=2.31.0
 json= 23.1.2
-openpyxl=23.1.2git
+openpyxl=23.1.2
